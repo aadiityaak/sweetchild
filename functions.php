@@ -9,21 +9,6 @@
 defined( 'ABSPATH' ) || exit;
 
 
-
-/**
- * Removes the parent themes stylesheet and scripts from inc/enqueue.php
- */
-function sweetchild_remove_scripts() {
-	wp_dequeue_style( 'sweetchild-styles' );
-	wp_deregister_style( 'sweetchild-styles' );
-
-	wp_dequeue_script( 'sweetchild-scripts' );
-	wp_deregister_script( 'sweetchild-scripts' );
-}
-add_action( 'wp_enqueue_scripts', 'sweetchild_remove_scripts', 20 );
-
-
-
 /**
  * Enqueue our stylesheet and javascript file
  */
@@ -31,11 +16,9 @@ function theme_enqueue_styles() {
 
 	// Get the theme data.
 	$the_theme = wp_get_theme();
-
-	$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
 	// Grab asset urls.
-	$theme_styles  = "/css/child-theme{$suffix}.css";
-	$theme_scripts = "/js/child-theme{$suffix}.js";
+	$theme_styles  = "/css/child-theme.css";
+	$theme_scripts = "/js/child-theme.js";
 
 	wp_enqueue_style( 'child-sweetchild-styles', get_stylesheet_directory_uri() . $theme_styles, array(), $the_theme->get( 'Version' ) );
 	wp_enqueue_script( 'jquery' );
@@ -44,7 +27,7 @@ function theme_enqueue_styles() {
 		wp_enqueue_script( 'comment-reply' );
 	}
 }
-add_action( 'wp_enqueue_scripts', 'theme_enqueue_styles' );
+
 
 
 
@@ -53,6 +36,7 @@ add_action( 'wp_enqueue_scripts', 'theme_enqueue_styles' );
  */
 function add_child_theme_textdomain() {
 	load_child_theme_textdomain( 'sweetchild-child', get_stylesheet_directory() . '/languages' );
+	add_action( 'wp_enqueue_scripts', 'theme_enqueue_styles' );
 }
 add_action( 'after_setup_theme', 'add_child_theme_textdomain' );
 
