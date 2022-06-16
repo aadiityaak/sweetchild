@@ -8,6 +8,10 @@
 // Exit if accessed directly.
 defined( 'ABSPATH' ) || exit;
 
+// load file setup.php
+if ( class_exists( 'FLBuilder' ) ) {
+    require_once 'inc/beaver-builder.php';
+}
 
 /**
  * Enqueue our stylesheet and javascript file
