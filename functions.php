@@ -60,7 +60,7 @@ add_action( 'after_setup_theme', 'add_child_theme_textdomain' );
 function sweetchild_default_bootstrap_version( $current_mod ) {
 	return 'bootstrap5';
 }
-add_filter( 'theme_mod_sweetchild_bootstrap_version', 'sweetchild_default_bootstrap_version', 20 );
+add_filter( 'theme_mod_understrap_bootstrap_version', 'sweetchild_default_bootstrap_version', 20 );
 
 
 
