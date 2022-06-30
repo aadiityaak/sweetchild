@@ -37,8 +37,6 @@ function theme_enqueue_styles() {
 }
 
 
-
-
 /**
  * Load the child theme's text domain
  */
@@ -79,3 +77,9 @@ function sweetchild_child_customize_controls_js() {
 	);
 }
 add_action( 'customize_controls_enqueue_scripts', 'sweetchild_child_customize_controls_js' );
+
+
+/**
+ * Remove default understrap trim filter
+ */
+remove_filter( 'wp_trim_excerpt', 'understrap_all_excerpts_get_more_link', 10, 2 ); 
