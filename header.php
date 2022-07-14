@@ -25,7 +25,6 @@ defined( 'ABSPATH' ) || exit;
 <div class="site" id="page">
 
 	<!-- ******************* The Navbar Area ******************* -->
-	<header id="wrapper-navbar">
 	<?php
 		/**
 		 * Functions hooked into sweetweb_header action
@@ -36,4 +35,3 @@ defined( 'ABSPATH' ) || exit;
 		 */
 		do_action( 'sweetweb_header' ); 
 		?>
-	</header><!-- #wrapper-navbar end -->
